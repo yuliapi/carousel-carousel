@@ -3,9 +3,13 @@ Easy to use responsive slider.
 Tested in last versions of Chrome, Safari, Firefox and Opera 
 
 ## Usage
-HTML
-    <div id="myCarousel" class="carousel">
-        
+Copy from src folder to your project and link:
++ styles.css (compiled)
++ carouse.js
+
+Use HTML markdown: 
+
+    <div id="myCarousel" class="carousel">     
         <div class="carousel-body">
             <div class="carousel-slide slide active">
                 <div class="slide-content">
@@ -57,4 +61,4 @@ Activate carousel in your javascript file:
 
     let myCarousel = new Carousel(document.getElementById('myCarousel'));
         myCarousel.activate()
-        
+       
