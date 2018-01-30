@@ -45,7 +45,6 @@ HTML
                     <li class="progress-bullet active"><a href="#" data-slide="0" ></a></li>
                     <li class="progress-bullet"><a href="#" data-slide="1"></a></li>
                     <li class="progress-bullet"><a href="#" data-slide="2"></a></li>
-                    <li class="progress-bullet"><a href="#" data-slide="3"></a></li>
                 </ul>
                 <button class="slide-control control-next" data-controls="myCarousel"
                         data-target="next"><span></span>
@@ -53,6 +52,7 @@ HTML
             </div>
         </div>
     </div>
+    
 Activate carousel in your javascript file:
 
     let myCarousel = new Carousel(document.getElementById('myCarousel'));
