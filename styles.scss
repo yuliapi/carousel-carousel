@@ -1,0 +1,339 @@
+$color-base: rgba(170, 170, 170, 1);
+$color-base-light: rgb(228, 228, 228);
+$color-base-dark: rgb(110, 110, 110);
+$color-fade: rgba(170, 170, 170, 0.45);
+/******************Screen size breaks************************/
+$break-small: 480px;
+$break-medium: 810px;
+$break-large: 1200px;
+/*****************Helper variables**************************/
+$bottom-height: 100px;
+
+$side-width-large: 100px;
+$side-width-medium: 50px;
+
+$slide-width: 710px;
+
+$box-shadow: 0 10px 20px 5px $color-base, 0 0 2px $color-base-light;
+$border-color: rgba(19, 19, 19, 0.45);
+$transition: all 0.5s ease-in-out;
+
+@mixin adjust-content($media) {
+  @if $media == small {
+    @media only screen and (max-width: $break-small) {
+      @content;
+    }
+  }
+  @if $media == medium {
+    @media only screen and (min-width: $break-small) and (max-width: $break-medium) {
+      @content;
+    }
+  }
+  @if $media == large {
+    @media only screen and (min-width: $break-medium) and (max-width: $break-large) {
+      @content;
+    }
+  }
+  @if $media == x-large {
+    @media only screen and (min-width: $break-large) {
+      @content;
+    }
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.carousel {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-areas: "top" "bottom";
+  grid-template-rows: 1fr $bottom-height;
+  @include adjust-content(small) {
+    display: inline-flex;
+  }
+}
+
+.carousel-body {
+  display: flex;
+  align-items: center;
+  grid-area: top;
+  @include adjust-content(small) {
+    grid-area: center;
+  }
+
+}
+
+.carousel-progress {
+  grid-area: bottom;
+  @include adjust-content(small) {
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    bottom: 0;
+    padding: 0;
+  }
+}
+
+.carousel-controls {
+  position: fixed;
+  top: 0;
+  height: calc(100% - #{$bottom-height});
+  width: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-areas: 'left center right';
+  @include adjust-content(small) {
+    display: none;
+  }
+  @include adjust-content(medium) {
+    grid-template-columns: $side-width-medium 1fr $side-width-medium;
+    z-index: 1000;
+  }
+  @include adjust-content(large) {
+    grid-template-columns: $side-width-medium 1fr $side-width-medium;
+  }
+  @include adjust-content(x-large) {
+    grid-template-columns: $side-width-large 1fr $side-width-large;
+  }
+  .slide-control {
+    height: 100%;
+    background-color: $color-base-light;
+    opacity: 0.5;
+    border-radius: 0;
+    margin: 0;
+    width: 100%;
+
+    span {
+      color: $color-base-dark;
+    }
+    &.control-next {
+      grid-area: right;
+    }
+    &.control-prev {
+      grid-area: left;
+    }
+  }
+}
+
+.slide-control {
+  height: 40px;
+  width: 40px;
+  margin-top: -20px;
+  border-radius: 50%;
+  border-color: transparent;
+  background: transparent;
+  color: $color-base-light;
+  font-size: 20px;
+  outline: none;
+  &:disabled {
+    display: none;
+  }
+  span {
+    color: $color-base-light;
+    cursor: pointer;
+    display: inline-block;
+    transform: scale(1.5, 1.5);
+    transition: all 0.3s ease-in-out;
+  }
+  &.control-prev span:before {
+    margin-left: 10px;
+    content: '\00ab';
+  }
+  &.control-next span:before {
+    margin-right: 10px;
+    content: '\00bb';
+  }
+  &.control-prev:hover span {
+    transform: scale(2.3, 2.3) translateX(-5px);
+    transition: all 0.3s ease-in-out;
+  }
+
+  &.control-next:hover span {
+
+    transform: scale(2.3, 2.3) translateX(5px);
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+/**************************Slide positioning*************************/
+@mixin slide-position($width, $side-width) {
+  &.slide-right.next {
+    right: calc(-#{$width} + #{$side-width});
+  }
+  &.slide-left.previous {
+    right: calc(100vw - #{$side-width});
+
+  }
+  &.active {
+    right: calc((50vw - #{$width} / 2));
+  }
+}
+
+.slide {
+  position: fixed;
+  right: 0;
+  transition: all 1s ease-in-out;
+  box-sizing: border-box;
+  border: 1px solid $border-color;
+  box-shadow: $box-shadow;
+  @include adjust-content(small) {
+    width: 100vw;
+    height: 100%;
+    border: none;
+    box-shadow: unset;
+
+    @include slide-position(100vw, 0px);
+  }
+
+  @include adjust-content(medium) {
+    height: calc(100% - #{$bottom-height});
+    width: 100vw;
+    padding-left: $side-width-medium;
+    padding-right: $side-width-medium;
+    background-color: rgb(255, 255, 255);
+
+    @include slide-position(100vw, 0px);
+  }
+;
+
+  @include adjust-content(large) {
+    height: calc(100% - #{$bottom-height});
+    width: $slide-width;
+    @include slide-position($slide-width, $side-width-medium);
+  }
+;
+  @include adjust-content(x-large) {
+    height: calc(100% - #{$bottom-height});
+    width: $slide-width;
+    @include slide-position($slide-width, $side-width-large);
+  }
+
+  &.slide-right {
+    background-color: $color-base;
+    right: -150vw;
+  }
+  &.slide-left {
+    background-color: $color-base;
+    right: 150vw;
+  }
+
+}
+
+.carousel-progress {
+  grid-area: bottom;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  .progress-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    z-index: 0;
+    @include adjust-content(small) {
+      //transition: $transition;
+      //position: absolute;
+      //left: 0;
+      z-index: 1000;
+      padding-bottom: 20px;
+      background-color: transparent;
+      height: 100px;
+      display: inline-flex;
+      width: 100%;
+      justify-content: space-around;
+      button {
+        height: inherit;
+      }
+      span {
+        transform: scale(2, 2);
+      }
+      .slide-control.control-prev:hover span {
+        transform: scale(3, 3) translateX(-5px);
+        margin-bottom: 20px;
+        //transition: all 0.3s ease-in-out;
+      }
+
+      .slide-control.control-next:hover span {
+
+        transform: scale(4, 4) translateX(5px);
+        margin-bottom: 20px;
+        //transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+  ul {
+    padding: 0;
+    overflow: hidden;
+    display: inline-block;
+    float: left;
+    @include adjust-content(small) {
+      display: none;
+  }
+  .slide-control {
+    margin-top: 0;
+    @include adjust-content(small) {
+      display: none;
+    }
+  }
+  .slide-control:first-child {
+    float: left;
+  }
+  .slide-control:last-child {
+    float: left;
+  }
+}
+
+.progress-bullet {
+  list-style-type: none;
+  float: left;
+
+  a {
+    display: inline-block;
+    margin: 0 20px;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: $color-base-light;
+    transition: $transition;
+  }
+}
+
+.progress-bullet.active a {
+  background: $color-base-dark;
+  transform: scale(1.5, 1.5);
+}
+
+/****************************Presentation slyling***************************/
+.slide.active {
+  @include adjust-content(small) {
+    background-color: orange;
+  }
+  @include adjust-content(medium) {
+    background-color: green;
+  }
+  @include adjust-content(large) {
+    background-color: orangered;
+  }
+  @include adjust-content(x-large) {
+    background-color: blueviolet;
+  }
+}
+
+.slide-content {
+  text-align: center;
+  overflow: hidden;
+  p {
+    font-family: Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    display: inline-block;
+  }
+}
+
