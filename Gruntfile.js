@@ -9,7 +9,7 @@ module.exports = function (grunt) {
                 options: {
                 },
                 files: {
-                    'css/styles.css': 'styles.scss'
+                    'src/css/styles.css': 'src/*scss'
                 }
             }
         },
@@ -22,8 +22,37 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    "css/styles.css": "css/styles.css"
+                    "src/css/styles.css": "src/css/styles.css"
                 }
+            }
+        },
+        copy: {
+            main: {
+                files: [
+                    {
+                        cwd: 'src/images',  // set working folder / root to copy
+                        src: '**/*',           // copy all files and subfolders
+                        dest: 'dist/images',    // destination folder
+                        expand: true           // required when using cwd
+                    },
+                    {
+                        cwd: 'src',  // set working folder / root to copy
+                        src: '**/*.js',           // copy all files and subfolders
+                        dest: 'dist',    // destination folder
+                        expand: true           // required when using cwd
+                    },
+                    {
+                        cwd: 'src',  // set working folder / root to copy
+                        src: '**/*.html',           // copy all files and subfolders
+                        dest: 'dist',    // destination folder
+                        expand: true           // required when using cwd
+                    },
+                    {
+                        cwd: 'src/css',  // set working folder / root to copy
+                        src: '**/*',           // copy all files and subfolders
+                        dest: 'dist/css',    // destination folder
+                        expand: true           // required when using cwd
+                    }]
             }
         },
         autoprefixer: {
@@ -32,8 +61,14 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    "css/styles.css": "css/styles.css"
+                    "src/css/styles.css": "src/css/styles.css"
                 }
+            }
+        },
+        // Clean task
+        clean: {
+            all: {
+                src: ["dist/**/*"]
             }
         },
         watch: {
@@ -41,28 +76,40 @@ module.exports = function (grunt) {
                 livereload: true
             },
             html: {
-                files: ['index.html']
+                files: ['src/index.html'],
+                tasks: ['copy']
             },
             sass: {
                 options: {
                     // Monitor Sass files for changes and compile them, but don't reload the browser.
                     livereload: true
                 },
-                files: ['*.scss'],
+                files: ['src/*.scss'],
                 tasks: ['sass', 'postcss']
+            },
+            js: {
+                files: ['src/*.js'],
+                tasks: ['copy']
             }
         }
     });
 
     // Actually running things.
 
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-postcss');
-    grunt.loadNpmTasks('grunt-autoprefixer');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    // Load the plugins to run your tasks
+    require("load-grunt-tasks")(grunt, {
+        scope: "devDependencies"
+    });
 
 
     // Default task(s).
-    grunt.registerTask( 'default', ['sass', "postcss", 'watch' ]);
+    grunt.registerTask("default", [
+        "clean:all",
+        "sass",
+        "postcss",
+        "copy",
+        "watch"
+    ]);
 
 };
