@@ -1,0 +1,266 @@
+/******************Screen size breaks************************/
+/*****************Helper variables**************************/
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh; }
+
+.carousel {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-areas: "top" "bottom";
+  grid-template-rows: 1fr 100px; }
+  @media only screen and (max-width: 480px) {
+    .carousel {
+      display: -webkit-inline-box;
+      display: inline-flex; } }
+
+.carousel-body {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  grid-area: top; }
+  @media only screen and (max-width: 480px) {
+    .carousel-body {
+      grid-area: center; } }
+
+.carousel-progress {
+  grid-area: bottom; }
+  @media only screen and (max-width: 480px) {
+    .carousel-progress {
+      width: 100%;
+      height: 70px;
+      position: fixed;
+      bottom: 0;
+      padding: 0; } }
+
+.carousel-controls {
+  position: fixed;
+  top: 0;
+  height: calc(100% - 100px);
+  width: 100%;
+  display: grid;
+  -webkit-box-align: center;
+          align-items: center;
+  grid-template-areas: 'left center right'; }
+  @media only screen and (max-width: 480px) {
+    .carousel-controls {
+      display: none; } }
+  @media only screen and (min-width: 480px) and (max-width: 810px) {
+    .carousel-controls {
+      grid-template-columns: 50px 1fr 50px;
+      z-index: 1000; } }
+  @media only screen and (min-width: 810px) and (max-width: 1200px) {
+    .carousel-controls {
+      grid-template-columns: 50px 1fr 50px; } }
+  @media only screen and (min-width: 1200px) {
+    .carousel-controls {
+      grid-template-columns: 100px 1fr 100px; } }
+  .carousel-controls .slide-control {
+    height: 100%;
+    background-color: #e4e4e4;
+    opacity: 0.5;
+    border-radius: 0;
+    margin: 0;
+    width: 100%; }
+    .carousel-controls .slide-control span {
+      color: #6e6e6e; }
+    .carousel-controls .slide-control.control-next {
+      grid-area: right; }
+    .carousel-controls .slide-control.control-prev {
+      grid-area: left; }
+
+.slide-control {
+  height: 40px;
+  width: 40px;
+  margin-top: -20px;
+  border-radius: 50%;
+  border-color: transparent;
+  background: transparent;
+  color: #e4e4e4;
+  font-size: 20px;
+  outline: none; }
+  .slide-control:disabled {
+    display: none; }
+  .slide-control span {
+    color: #e4e4e4;
+    cursor: pointer;
+    display: inline-block;
+    -webkit-transform: scale(1.5, 1.5);
+            transform: scale(1.5, 1.5);
+    transition: all 0.3s ease-in-out; }
+  .slide-control.control-prev span:before {
+    margin-left: 10px;
+    content: '\00ab'; }
+  .slide-control.control-next span:before {
+    margin-right: 10px;
+    content: '\00bb'; }
+  .slide-control.control-prev:hover span {
+    -webkit-transform: scale(2.3, 2.3) translateX(-5px);
+            transform: scale(2.3, 2.3) translateX(-5px);
+    transition: all 0.3s ease-in-out; }
+  .slide-control.control-next:hover span {
+    -webkit-transform: scale(2.3, 2.3) translateX(5px);
+            transform: scale(2.3, 2.3) translateX(5px);
+    transition: all 0.3s ease-in-out; }
+
+/**************************Slide positioning*************************/
+.slide {
+  position: fixed;
+  right: 0;
+  transition: all 1s ease-in-out;
+  box-sizing: border-box;
+  border: 1px solid rgba(19, 19, 19, 0.45);
+  box-shadow: 0 10px 20px 5px #aaaaaa, 0 0 2px #e4e4e4; }
+  @media only screen and (max-width: 480px) {
+    .slide {
+      width: 100vw;
+      height: 100%;
+      border: none;
+      box-shadow: unset; }
+      .slide.slide-right.next {
+        right: calc(-100vw + 0px); }
+      .slide.slide-left.previous {
+        right: calc(100vw - 0px); }
+      .slide.active {
+        right: calc((50vw - 100vw / 2)); } }
+  @media only screen and (min-width: 480px) and (max-width: 810px) {
+    .slide {
+      height: calc(100% - 100px);
+      width: 100vw;
+      padding-left: 50px;
+      padding-right: 50px;
+      background-color: white; }
+      .slide.slide-right.next {
+        right: calc(-100vw + 0px); }
+      .slide.slide-left.previous {
+        right: calc(100vw - 0px); }
+      .slide.active {
+        right: calc((50vw - 100vw / 2)); } }
+  @media only screen and (min-width: 810px) and (max-width: 1200px) {
+    .slide {
+      height: calc(100% - 100px);
+      width: 710px; }
+      .slide.slide-right.next {
+        right: calc(-710px + 50px); }
+      .slide.slide-left.previous {
+        right: calc(100vw - 50px); }
+      .slide.active {
+        right: calc((50vw - 710px / 2)); } }
+  @media only screen and (min-width: 1200px) {
+    .slide {
+      height: calc(100% - 100px);
+      width: 710px; }
+      .slide.slide-right.next {
+        right: calc(-710px + 100px); }
+      .slide.slide-left.previous {
+        right: calc(100vw - 100px); }
+      .slide.active {
+        right: calc((50vw - 710px / 2)); } }
+  .slide.slide-right {
+    background-color: #aaaaaa;
+    right: -150vw; }
+  .slide.slide-left {
+    background-color: #aaaaaa;
+    right: 150vw; }
+
+.carousel-progress {
+  grid-area: bottom;
+  overflow: hidden;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center; }
+  .carousel-progress .progress-wrapper {
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+    z-index: 0; }
+    @media only screen and (max-width: 480px) {
+      .carousel-progress .progress-wrapper {
+        z-index: 1000;
+        padding-bottom: 20px;
+        background-color: transparent;
+        height: 100px;
+        display: -webkit-inline-box;
+        display: inline-flex;
+        width: 100%;
+        justify-content: space-around; }
+        .carousel-progress .progress-wrapper button {
+          height: inherit; }
+        .carousel-progress .progress-wrapper span {
+          -webkit-transform: scale(2, 2);
+                  transform: scale(2, 2); }
+        .carousel-progress .progress-wrapper .slide-control.control-prev:hover span {
+          -webkit-transform: scale(3, 3) translateX(-5px);
+                  transform: scale(3, 3) translateX(-5px);
+          margin-bottom: 20px; }
+        .carousel-progress .progress-wrapper .slide-control.control-next:hover span {
+          -webkit-transform: scale(4, 4) translateX(5px);
+                  transform: scale(4, 4) translateX(5px);
+          margin-bottom: 20px; } }
+
+ul {
+  padding: 0;
+  overflow: hidden;
+  display: inline-block;
+  float: left; }
+  @media only screen and (max-width: 480px) {
+    ul {
+      display: none; } }
+  ul .slide-control {
+    margin-top: 0; }
+    @media only screen and (max-width: 480px) {
+      ul .slide-control {
+        display: none; } }
+  ul .slide-control:first-child {
+    float: left; }
+  ul .slide-control:last-child {
+    float: left; }
+
+.progress-bullet {
+  list-style-type: none;
+  float: left; }
+  .progress-bullet a {
+    display: inline-block;
+    margin: 0 20px;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: #e4e4e4;
+    transition: all 0.5s ease-in-out; }
+
+.progress-bullet.active a {
+  background: #6e6e6e;
+  -webkit-transform: scale(1.5, 1.5);
+          transform: scale(1.5, 1.5); }
+
+/****************************Presentation slyling***************************/
+@media only screen and (max-width: 480px) {
+  .slide.active {
+    background-color: orange; } }
+@media only screen and (min-width: 480px) and (max-width: 810px) {
+  .slide.active {
+    background-color: green; } }
+@media only screen and (min-width: 810px) and (max-width: 1200px) {
+  .slide.active {
+    background-color: orangered; } }
+@media only screen and (min-width: 1200px) {
+  .slide.active {
+    background-color: blueviolet; } }
+
+.slide-content {
+  text-align: center;
+  overflow: hidden; }
+  .slide-content p {
+    font-family: Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    display: inline-block; }
+
+/*# sourceMappingURL=styles.css.map */
