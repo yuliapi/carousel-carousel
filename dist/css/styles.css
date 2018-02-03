@@ -5,6 +5,9 @@ body {
   padding: 0;
   height: 100vh; }
 
+.content {
+  height: 600px; }
+
 .carousel {
   height: 100%;
   width: 100%;
@@ -20,12 +23,7 @@ body {
 .carousel-body {
   display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
-          align-items: center;
-  grid-area: top; }
-  @media only screen and (max-width: 480px) {
-    .carousel-body {
-      grid-area: center; } }
+  height: 515px; }
 
 .carousel-progress {
   grid-area: bottom; }
@@ -61,8 +59,6 @@ body {
       grid-template-columns: 100px 1fr 100px; } }
   .carousel-controls .slide-control {
     height: 100%;
-    background-color: #e4e4e4;
-    opacity: 0.5;
     border-radius: 0;
     margin: 0;
     width: 100%; }
@@ -109,16 +105,16 @@ body {
 
 /**************************Slide positioning*************************/
 .slide {
+  align-self: center;
   position: fixed;
   right: 0;
   transition: all 1s ease-in-out;
   box-sizing: border-box;
-  border: 1px solid rgba(19, 19, 19, 0.45);
-  box-shadow: 0 10px 20px 5px #aaaaaa, 0 0 2px #e4e4e4; }
+  box-shadow: 0 10px 20px 5px #aaaaaa, 0 0 2px #e4e4e4;
+  opacity: 0.3; }
   @media only screen and (max-width: 480px) {
     .slide {
       width: 100vw;
-      height: 100%;
       border: none;
       box-shadow: unset; }
       .slide.slide-right.next {
@@ -126,10 +122,10 @@ body {
       .slide.slide-left.previous {
         right: calc(100vw - 0px); }
       .slide.active {
+        opacity: 1;
         right: calc((50vw - 100vw / 2)); } }
   @media only screen and (min-width: 480px) and (max-width: 810px) {
     .slide {
-      height: calc(100% - 100px);
       width: 100vw;
       padding-left: 50px;
       padding-right: 50px;
@@ -139,26 +135,27 @@ body {
       .slide.slide-left.previous {
         right: calc(100vw - 0px); }
       .slide.active {
+        opacity: 1;
         right: calc((50vw - 100vw / 2)); } }
   @media only screen and (min-width: 810px) and (max-width: 1200px) {
     .slide {
-      height: calc(100% - 100px);
       width: 710px; }
       .slide.slide-right.next {
         right: calc(-710px + 50px); }
       .slide.slide-left.previous {
         right: calc(100vw - 50px); }
       .slide.active {
+        opacity: 1;
         right: calc((50vw - 710px / 2)); } }
   @media only screen and (min-width: 1200px) {
     .slide {
-      height: calc(100% - 100px);
       width: 710px; }
       .slide.slide-right.next {
         right: calc(-710px + 100px); }
       .slide.slide-left.previous {
         right: calc(100vw - 100px); }
       .slide.active {
+        opacity: 1;
         right: calc((50vw - 710px / 2)); } }
   .slide.slide-right {
     background-color: #aaaaaa;
@@ -241,26 +238,25 @@ ul {
           transform: scale(1.5, 1.5); }
 
 /****************************Presentation slyling***************************/
-@media only screen and (max-width: 480px) {
-  .slide.active {
-    background-color: orange; } }
-@media only screen and (min-width: 480px) and (max-width: 810px) {
-  .slide.active {
-    background-color: green; } }
-@media only screen and (min-width: 810px) and (max-width: 1200px) {
-  .slide.active {
-    background-color: orangered; } }
-@media only screen and (min-width: 1200px) {
-  .slide.active {
-    background-color: blueviolet; } }
-
 .slide-content {
-  text-align: center;
-  overflow: hidden; }
-  .slide-content p {
-    font-family: Helvetica, sans-serif;
-    font-size: 40px;
-    font-weight: 600;
-    display: inline-block; }
+  display: -webkit-box;
+  display: flex; }
+  @media only screen and (min-width: 810px) and (max-width: 1200px) {
+    .slide-content {
+      height: -webkit-max-content;
+      height: -moz-max-content;
+      height: max-content; }
+      .slide-content img {
+        height: 515px; } }
+  @media only screen and (min-width: 1200px) {
+    .slide-content {
+      height: -webkit-max-content;
+      height: -moz-max-content;
+      height: max-content; }
+      .slide-content img {
+        height: 515px; } }
+  .slide-content img {
+    width: 100%;
+    position: relative; }
 
 /*# sourceMappingURL=styles.css.map */

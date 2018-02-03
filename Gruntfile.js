@@ -3,11 +3,47 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        connect: {
+            server: {
+                options: {
+                    port: 8000,
+                    hostname: 'localhost',
+                    open: {
+                        target: 'http://localhost:8000'
+                    },
+                    base: "src"
+                }
+            },
+        },
+        responsive_images: {
+            myTask: {
+                options: {
+                    engine: 'gm',
+                    sizes: [
+                        {
+                            name: 'small',
+                            width: '480',
+                            quality: 40
+                        }, {
+
+                            name: 'large',
+                            height: '515',
+                            quality: 40
+                        }],
+                },
+                files: [{
+                    expand: true,
+                    src: ['*.{gif,jpg,png}'],
+                    cwd: 'src/images/source',
+                    dest: 'src/images/'
+                }]
+            }
+        },
+
 
         sass: {
             dist: {
-                options: {
-                },
+                options: {},
                 files: {
                     'src/css/styles.css': 'src/*scss'
                 }
@@ -30,8 +66,8 @@ module.exports = function (grunt) {
             main: {
                 files: [
                     {
-                        cwd: 'src/images',  // set working folder / root to copy
-                        src: '**/*',           // copy all files and subfolders
+                        cwd: 'src/images/',  // set working folder / root to copy
+                        src: '**/*.jpg',           // copy all files and subfolders
                         dest: 'dist/images',    // destination folder
                         expand: true           // required when using cwd
                     },
@@ -97,6 +133,8 @@ module.exports = function (grunt) {
     // Actually running things.
 
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+
     // Load the plugins to run your tasks
     require("load-grunt-tasks")(grunt, {
         scope: "devDependencies"
@@ -105,10 +143,12 @@ module.exports = function (grunt) {
 
     // Default task(s).
     grunt.registerTask("default", [
+        'responsive_images',
         "clean:all",
         "sass",
         "postcss",
         "copy",
+        "connect:server",
         "watch"
     ]);
 

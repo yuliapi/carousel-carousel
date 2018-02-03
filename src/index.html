@@ -24,93 +24,117 @@
 </head>
 
 <body>
+<div class="content">
+    <div id="myCarousel" class="carousel">
 
-<div id="myCarousel" class="carousel">
+        <div class="carousel-body">
 
-    <div class="carousel-body">
+            <div class="carousel-slide slide active">
+                <div class="slide-content first">
+                    <picture>
+                        <source media="(min-width: 480px)" srcset="images/look-through-lense-large.jpg">
+                        <img src="images/look-through-lense-small.jpg" alt="city-in-lense">
+                    </picture>
 
-        <div class="carousel-slide slide active">
-            <div class="slide-content first">
-                <p>First</p>
+                </div>
+            </div>
+            <div class="carousel-slide slide slide-right next">
+                <div class="slide-content second">
+                    <picture>
+                        <source media="(min-width: 480px)" srcset="images/monkeys-large.jpg">
+                        <img src="images/monkeys-small.jpg" alt="Monkeys">
+                    </picture>
+                </div>
+
+            </div>
+            <div class="carousel-slide slide slide-right">
+                <div class="slide-content third">
+                    <picture>
+                        <source media="(min-width: 480px)" srcset="images/watch-large.jpg">
+                        <img src="images/watch-small.jpg" alt="Watch">
+                    </picture>
+                </div>
+            </div>
+            <div class="carousel-slide slide slide-right">
+                <div class="slide-content fourth">
+                    <picture>
+                        <source media="(min-width: 480px)" srcset="images/seashore-large.jpg">
+                        <img src="images/seashore-small.jpg" alt="Seashore">
+                    </picture>
+                </div>
+            </div>
+            <div class="carousel-slide slide slide-right">
+                <div class="slide-content fifth">
+                    <picture>
+                        <source media="(min-width: 480px)" srcset="images/sky-large.jpg">
+                        <img src="images/sky-small.jpg" alt="Sky">
+                    </picture>
+                </div>
+
+            </div>
+            <div class="carousel-slide slide slide-right">
+                <div class="slide-content sixth">
+                    <picture>
+                        <source media="(min-width: 480px)" srcset="images/old-lady-large.jpg">
+                        <img src="images/old-lady-small.jpg" alt="Old lady">
+                    </picture>
+                </div>
+            </div>
+            <div class="carousel-slide slide slide-right">
+                <div class="slide-content seventh">
+                    <picture>
+                        <source media="(min-width: 480px)" srcset="images/shoes-and-sand-large.jpg">
+                        <img src="images/shoes-and-sand-small.jpg" alt="Shoes on sand">
+                    </picture>
+                </div>
+            </div>
+            <div class="carousel-slide slide slide-right">
+                <div class="slide-content seventh">
+                    <picture>
+                        <source media="(min-width: 480px)" srcset="images/sunset-large.jpg">
+                        <img src="images/sunset-small.jpg" alt="Sunset">
+                    </picture>
+                </div>
             </div>
         </div>
-        <div class="carousel-slide slide slide-right next">
-            <div class="slide-content second">
-                <p>Second</p>
-            </div>
-
-        </div>
-        <div class="carousel-slide slide slide-right">
-            <div class="slide-content third">
-                <p>Third</p>
-            </div>
-        </div>
-        <div class="carousel-slide slide slide-right">
-            <div class="slide-content fourth">
-                <p>Fourth</p>
-            </div>
-        </div>
-        <div class="carousel-slide slide slide-right">
-            <div class="slide-content fifth">
-                <p>Fifth</p>
-            </div>
-
-        </div>
-        <div class="carousel-slide slide slide-right">
-            <div class="slide-content sixth">
-                <p>Sixth</p>
-            </div>
-        </div>
-        <div class="carousel-slide slide slide-right">
-            <div class="slide-content seventh">
-                <p>Seventh</p>
-            </div>
-        </div>
-        <div class="carousel-slide slide slide-right">
-            <div class="slide-content seventh">
-                <p>Eighth</p>
-            </div>
-        </div>
-
-
-
-    </div>
-    <div class="carousel-controls">
-        <button class="slide-control control-next" id="btnNext" data-controls="myCarousel"
-                data-target="next"><span></span>
-        </button>
-        <button class="slide-control control-prev" id="btnPrevious" data-controls="myCarousel"
-                data-target="previous" disabled><span></span>
-        </button>
-
-    </div>
-    <div class="carousel-progress">
-        <div class="progress-wrapper">
-            <button class="slide-control control-prev" disabled data-controls="myCarousel"
-                    data-target="previous"><span></span>
-            </button>
-            <ul>
-
-                <li class="progress-bullet active"><a href="#" data-slide="0" ></a></li>
-                <li class="progress-bullet"><a href="#" data-slide="1"></a></li>
-                <li class="progress-bullet"><a href="#" data-slide="2"></a></li>
-                <li class="progress-bullet"><a href="#" data-slide="3"></a></li>
-                <li class="progress-bullet"><a href="#" data-slide="4"></a></li>
-                <li class="progress-bullet"><a href="#" data-slide="5"></a></li>
-                <li class="progress-bullet"><a href="#" data-slide="6"></a></li>
-                <li class="progress-bullet"><a href="#" data-slide="7"></a></li>
-
-
-            </ul>
-            <button class="slide-control control-next" data-controls="myCarousel"
+        <div class="carousel-controls">
+            <button class="slide-control control-next" id="btnNext" data-controls="myCarousel"
                     data-target="next"><span></span>
             </button>
+            <button class="slide-control control-prev" id="btnPrevious" data-controls="myCarousel"
+                    data-target="previous" disabled><span></span>
+            </button>
+
+        </div>
+        <div class="carousel-progress">
+            <div class="progress-wrapper">
+                <button class="slide-control control-prev" disabled data-controls="myCarousel"
+                        data-target="previous"><span></span>
+                </button>
+                <ul>
+
+                    <li class="progress-bullet active"><a href="#" data-slide="0"></a></li>
+                    <li class="progress-bullet"><a href="#" data-slide="1"></a></li>
+                    <li class="progress-bullet"><a href="#" data-slide="2"></a></li>
+                    <li class="progress-bullet"><a href="#" data-slide="3"></a></li>
+                    <li class="progress-bullet"><a href="#" data-slide="4"></a></li>
+                    <li class="progress-bullet"><a href="#" data-slide="5"></a></li>
+                    <li class="progress-bullet"><a href="#" data-slide="6"></a></li>
+                    <li class="progress-bullet"><a href="#" data-slide="7"></a></li>
+
+
+                </ul>
+                <button class="slide-control control-next" data-controls="myCarousel"
+                        data-target="next"><span></span>
+                </button>
+            </div>
+
         </div>
 
+
     </div>
-
-
 </div>
+
 
 
 <script src="carousel.js"></script>
