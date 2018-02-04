@@ -41,15 +41,8 @@ $transition: all 0.5s ease-in-out;
   }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-}
-.content {
-  height: 600px;
-}
 .carousel {
+  visibility: hidden;
   height: 100%;
   width: 100%;
   position: relative;
@@ -117,7 +110,7 @@ body {
   }
 }
 
-.slide-control {
+.carousel .slide-control {
   position: relative;
   height: 40px;
   width: 40px;
@@ -173,7 +166,7 @@ body {
   }
 }
 
-.slide {
+.carousel .slide {
   align-self: center;
   position: fixed;
   right: 0;
@@ -195,14 +188,12 @@ body {
     background-color: rgb(255, 255, 255);
 
     @include slide-position(100vw, 0px);
-  }
-;
+  };
 
   @include adjust-content(large) {
     width: $slide-width;
     @include slide-position($slide-width, $side-width-medium);
-  }
-;
+  };
   @include adjust-content(x-large) {
     width: $slide-width;
     @include slide-position($slide-width, $side-width-large);
@@ -279,7 +270,7 @@ body {
   }
 }
 
-.progress-bullet {
+.carousel .progress-bullet {
   list-style-type: none;
   float: left;
 
@@ -292,14 +283,21 @@ body {
     background: $color-base-light;
     transition: $transition;
   }
+  &.active a {
+    background: $color-base-dark;
+    transform: scale(1.5, 1.5);
+  }
 }
-
-.progress-bullet.active a {
-  background: $color-base-dark;
-  transform: scale(1.5, 1.5);
-}
-
 /****************************Presentation slyling***************************/
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+.content {
+  height: 600px;
+}
 
 .slide-content {
   display: flex;

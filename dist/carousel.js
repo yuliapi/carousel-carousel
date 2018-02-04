@@ -3,6 +3,51 @@ window.onload = function () {
     let myCarousel = new Carousel(document.getElementById('myCarousel'));
     myCarousel.activate()
 };
+
+class Div {
+    constructor(c) {
+        this.class = c;
+    }
+
+    render() {
+        let div = document.createElement('div');
+        div.classList.add(this.class);
+        return div
+    }
+}
+
+class BulletItem {
+    constructor(carousel, number) {
+        this.carousel = carousel;
+        this.number = number;
+
+        let item = document.createElement('li');
+        item.classList.add('progress-bullet');
+        if (this.number === 0) {
+            item.classList.add("active")
+        }
+        let link = document.createElement('a');
+        link.setAttribute('href', '#');
+        link.setAttribute('data-slide', this.number);
+
+        link.addEventListener('click', this.carousel.showSlide.bind(this.carousel, this.number));
+        item.appendChild(link);
+
+        this.item = item
+    }
+
+    render() {
+
+        return this.item
+    }
+    activate() {
+        this.item.classList.add('active');
+    }
+    deactivate() {
+        this.item.classList.remove('active')
+    }
+}
+
 class Slide {
     constructor(slide) {
         this.slide = slide;
@@ -23,44 +68,87 @@ class Slide {
 
 class Carousel {
     constructor(e) {
-        this.element = e
+        this.element = e;
         this.slides = this.element.getElementsByClassName('carousel-slide');
         this.modifiedSlides = [];
         for (let s of this.slides) {
             this.modifiedSlides.push(new Slide(s))
         }
-        this.controls = this.element.getElementsByClassName('slide-control');
 
-        this.bullets = this.element.getElementsByClassName('progress-bullet');
-        this.links = this.allLinks();
+        this.controls = this.element.getElementsByClassName('slide-control');
+        let {nextButton, previousButton} = this.getDirectionControls();
+        this.nextButton = nextButton;
+        this.previousButton = previousButton;
+        this.addEventListener(this.nextButton, this.nextSlide);
+        this.addEventListener(this.previousButton, this.prevSlide);
+        this.bullets = [];
         this.currentActiveNumber = 0;
 
     }
 
-    allLinks() {
-        let arr = [];
-        for (let each of this.bullets) {
-            arr.push(each.firstChild);
+    addEventListener(component, action) {
+        component.addEventListener('click', action.bind(this));
+    }
+
+    getDirectionControls() {
+        let nextButton, previousButton;
+        for (let button of this.controls) {
+
+            if (button.dataset.target === 'next') {
+                nextButton = button
+            }
+            if (button.dataset.target === 'previous') {
+                button.setAttribute('disabled', true);
+                previousButton = button
+
+            }
         }
-        return arr
+        return {nextButton: nextButton, previousButton: previousButton};
     }
 
     activate() {
+        this.initStyles();
+        this.addCarouselProgress();
+        this.element.style.visibility = 'visible';
+    }
 
-        let bulletHolder = this.bullets[0].parentElement.parentElement
-        console.log(bulletHolder)
+    addCarouselProgress() {
+        let wrapper = new Div('progress-wrapper');
+        let progressWrapper = wrapper.render();
+        let list = document.createElement('ul');
+        for (let j = 0; j < this.modifiedSlides.length; j++) {
+            let bullet = new BulletItem(this, j);
+            list.appendChild(bullet.render())
+            this.bullets.push(bullet)
+        }
+        console.log(this.bullets)
+        let prevControl = this.previousButton.cloneNode(true);
+        let nextControl = this.nextButton.cloneNode(true);
+        this.addEventListener(prevControl, this.prevSlide);
+        this.addEventListener(nextControl, this.nextSlide);
 
-        let allNext = this.element.getElementsByClassName('control-next');
-        let allPrev = this.element.getElementsByClassName('control-prev');
-        for (let next of allNext) {
-            next.addEventListener('click', this.nextSlide.bind(this));
-        }
-        for (let prev of allPrev) {
-            prev.addEventListener('click', this.prevSlide.bind(this));
-        }
-        for (let link of this.links) {
-            let target = link.dataset.slide;
-            link.addEventListener('click', this.showSlide.bind(this, target))
+        progressWrapper.appendChild(prevControl);
+        progressWrapper.appendChild(list);
+        progressWrapper.appendChild(nextControl);
+
+        let progress = new Div('carousel-progress');
+        let carouselProgress = progress.render();
+        carouselProgress.appendChild(progressWrapper);
+        this.element.appendChild(carouselProgress);
+    }
+
+    initStyles() {
+        for (let i = 0; i < this.modifiedSlides.length; i++) {
+            this.modifiedSlides[i].addNewClass('slide');
+            if (i === 1) {
+                this.modifiedSlides[i].addNewClass('next')
+            }
+            if (i > 0) {
+                this.modifiedSlides[i].addNewClass('slide-right')
+            }
+            if (i === 0) {
+                this.modifiedSlides[i].addNewClass('active');
+            }
         }
     }
 
@@ -94,10 +182,20 @@ class Carousel {
     }
 
     showSlide(n) {
-
-
         n = parseInt(n);
         this.switchActive(n);
+        if (n === this.modifiedSlides.length - 1) {
+            this.switchDisabled('next', true)
+        }
+        if (this.currentActiveNumber === this.modifiedSlides.length - 1 && n < this.modifiedSlides.length - 1) {
+            this.switchDisabled('next', false)
+        }
+        if (n === 0) {
+            this.switchDisabled('previous', true)
+        }
+        if (this.currentActiveNumber === 0 && n > 0) {
+            this.switchDisabled('previous', false)
+        }
         this.currentActiveNumber = n;
     }
 
@@ -133,11 +231,9 @@ class Carousel {
         }
 
         for (let b of this.bullets) {
-            if (b.classList.contains('active')) {
-                b.classList.remove('active');
-            }
+            b.deactivate()
         }
-        this.bullets[targetNumber].classList.add('active');
+        this.bullets[targetNumber].activate();
     }
 
     switchDisabled(target, value) {

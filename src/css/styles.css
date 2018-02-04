@@ -1,14 +1,7 @@
 /******************Screen size breaks************************/
 /*****************Helper variables**************************/
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh; }
-
-.content {
-  height: 600px; }
-
 .carousel {
+  visibility: hidden;
   height: 100%;
   width: 100%;
   position: relative;
@@ -69,7 +62,7 @@ body {
     .carousel-controls .slide-control.control-prev {
       grid-area: left; }
 
-.slide-control {
+.carousel .slide-control {
   position: relative;
   height: 40px;
   width: 40px;
@@ -80,32 +73,32 @@ body {
   color: #e4e4e4;
   font-size: 20px;
   outline: none; }
-  .slide-control:disabled {
+  .carousel .slide-control:disabled {
     display: none; }
-  .slide-control span {
+  .carousel .slide-control span {
     color: #e4e4e4;
     cursor: pointer;
     display: inline-block;
     -webkit-transform: scale(1.5, 1.5);
             transform: scale(1.5, 1.5);
     transition: all 0.3s ease-in-out; }
-  .slide-control.control-prev span:before {
+  .carousel .slide-control.control-prev span:before {
     margin-left: 10px;
     content: '\00ab'; }
-  .slide-control.control-next span:before {
+  .carousel .slide-control.control-next span:before {
     margin-right: 10px;
     content: '\00bb'; }
-  .slide-control.control-prev:hover span {
+  .carousel .slide-control.control-prev:hover span {
     -webkit-transform: scale(2.3, 2.3) translateX(-5px);
             transform: scale(2.3, 2.3) translateX(-5px);
     transition: all 0.3s ease-in-out; }
-  .slide-control.control-next:hover span {
+  .carousel .slide-control.control-next:hover span {
     -webkit-transform: scale(2.3, 2.3) translateX(5px);
             transform: scale(2.3, 2.3) translateX(5px);
     transition: all 0.3s ease-in-out; }
 
 /**************************Slide positioning*************************/
-.slide {
+.carousel .slide {
   align-self: center;
   position: fixed;
   right: 0;
@@ -113,54 +106,54 @@ body {
   box-sizing: border-box;
   opacity: 0.3; }
   @media only screen and (max-width: 480px) {
-    .slide {
+    .carousel .slide {
       width: 100vw;
       border: none;
       box-shadow: unset; }
-      .slide.slide-right.next {
+      .carousel .slide.slide-right.next {
         right: calc(-100vw + 0px); }
-      .slide.slide-left.previous {
+      .carousel .slide.slide-left.previous {
         right: calc(100vw - 0px); }
-      .slide.active {
+      .carousel .slide.active {
         opacity: 1;
         right: calc((50vw - 100vw / 2)); } }
   @media only screen and (min-width: 480px) and (max-width: 810px) {
-    .slide {
+    .carousel .slide {
       width: 100vw;
       padding-left: 50px;
       padding-right: 50px;
       background-color: white; }
-      .slide.slide-right.next {
+      .carousel .slide.slide-right.next {
         right: calc(-100vw + 0px); }
-      .slide.slide-left.previous {
+      .carousel .slide.slide-left.previous {
         right: calc(100vw - 0px); }
-      .slide.active {
+      .carousel .slide.active {
         opacity: 1;
         right: calc((50vw - 100vw / 2)); } }
   @media only screen and (min-width: 810px) and (max-width: 1200px) {
-    .slide {
+    .carousel .slide {
       width: 710px; }
-      .slide.slide-right.next {
+      .carousel .slide.slide-right.next {
         right: calc(-710px + 50px); }
-      .slide.slide-left.previous {
+      .carousel .slide.slide-left.previous {
         right: calc(100vw - 50px); }
-      .slide.active {
+      .carousel .slide.active {
         opacity: 1;
         right: calc((50vw - 710px / 2)); } }
   @media only screen and (min-width: 1200px) {
-    .slide {
+    .carousel .slide {
       width: 710px; }
-      .slide.slide-right.next {
+      .carousel .slide.slide-right.next {
         right: calc(-710px + 100px); }
-      .slide.slide-left.previous {
+      .carousel .slide.slide-left.previous {
         right: calc(100vw - 100px); }
-      .slide.active {
+      .carousel .slide.active {
         opacity: 1;
         right: calc((50vw - 710px / 2)); } }
-  .slide.slide-right {
+  .carousel .slide.slide-right {
     background-color: #aaaaaa;
     right: -150vw; }
-  .slide.slide-left {
+  .carousel .slide.slide-left {
     background-color: #aaaaaa;
     right: 150vw; }
 
@@ -221,10 +214,10 @@ ul {
   ul .slide-control:last-child {
     float: left; }
 
-.progress-bullet {
+.carousel .progress-bullet {
   list-style-type: none;
   float: left; }
-  .progress-bullet a {
+  .carousel .progress-bullet a {
     display: inline-block;
     margin: 0 20px;
     height: 10px;
@@ -232,13 +225,20 @@ ul {
     border-radius: 50%;
     background: #e4e4e4;
     transition: all 0.5s ease-in-out; }
-
-.progress-bullet.active a {
-  background: #6e6e6e;
-  -webkit-transform: scale(1.5, 1.5);
-          transform: scale(1.5, 1.5); }
+  .carousel .progress-bullet.active a {
+    background: #6e6e6e;
+    -webkit-transform: scale(1.5, 1.5);
+            transform: scale(1.5, 1.5); }
 
 /****************************Presentation slyling***************************/
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh; }
+
+.content {
+  height: 600px; }
+
 .slide-content {
   display: -webkit-box;
   display: flex; }
