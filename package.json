@@ -1,20 +1,34 @@
 {
-  "name": "my-project-name",
+  "name": "carousel-carousel",
+  "description": "JS component for rendering animated responsive slider with progress bullets",
   "version": "0.1.0",
-  "devDependencies": {
-    "autoprefixer": "^7.2.4",
-    "grunt": "~0.4.5",
-    "grunt-autoprefixer": "^3.0.4",
-    "grunt-contrib-clean": "^1.1.0",
-    "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-postcss": "^0.9.0",
-    "grunt-responsive-images": "^1.10.1"
+  "keywords": [
+    "slider",
+    "carousel",
+    "front-end",
+    "responsive",
+    "progress",
+    "animation"
+  ],
+  "homepage": "https://github.com/yuliapi/carousel",
+  "author": "Iuliia Pishculina (http://yuliapi.github.io/)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuliapi/carousel.git"
   },
-  "dependencies": {
-    "grunt-prettify": "^0.4.0",
-    "load-grunt-tasks": "^3.5.2"
-  }
+  "bugs": {
+    "url": "https://github.com/yuliapi/carousel/issues"
+  },
+  "lisence": "MIT",
+  "engines": {
+    "node": ">=6"
+  },
+  "files": [
+    "js/{src}/",
+    "scss/"
+  ],
+  "browserList":[],
+  "devDependencies": {},
+  "dependencies": {}
+
 }
