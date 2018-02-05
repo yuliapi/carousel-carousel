@@ -288,37 +288,3 @@ $transition: all 0.5s ease-in-out;
     transform: scale(1.5, 1.5);
   }
 }
-/****************************Presentation slyling***************************/
-
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-}
-.content {
-  height: 600px;
-}
-
-.slide-content {
-  display: flex;
-  img {
-    box-shadow: $box-shadow;
-  }
-  @include adjust-content(large) {
-   height: max-content;
-    img {
-      height: 515px;
-    }
-  }
-  @include adjust-content(x-large) {
-    height: max-content;
-    img {
-      height: 515px;
-    }
-  }
-  img {
-    width: 100%;
-    position: relative;
-  }
-}
-
