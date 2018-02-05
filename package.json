@@ -1,7 +1,7 @@
 {
   "name": "carousel-carousel",
   "description": "JS component for rendering animated responsive slider with progress bullets",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [
     "slider",
     "carousel",
@@ -23,10 +23,6 @@
   "engines": {
     "node": ">=6"
   },
-  "files": [
-    "js/src/",
-    "scss/"
-  ],
   "browserList": [],
   "devDependencies": {},
   "dependencies": {}
