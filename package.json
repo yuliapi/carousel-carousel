@@ -1,7 +1,7 @@
 {
   "name": "carousel-carousel",
   "description": "JS component for rendering animated responsive slider with progress bullets",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "keywords": [
     "slider",
     "carousel",
@@ -30,7 +30,7 @@
     "js-minify": "uglifyjs --compress --mangle --output js/dist/carousel.min.js js/dist/carousel.js",
     "release": "npm-run-all css-* js-*",
     "prepublish": "npm-auto-version",
-    "postpublish": "git push origin --tags"
+    "postpublish": "git commit git push origin --tags"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
