@@ -30,7 +30,7 @@
     "js-minify": "uglifyjs --compress --mangle --output js/dist/carousel.min.js js/dist/carousel.js",
     "release": "npm-run-all css-* js-*",
     "prepublish": "npm version patch",
-    "postpublish": "git commit package.json -m \"Version incremented.\" && git push origin --tags && git push origin master"
+    "postpublish": "git commit package.json -m \"Version incremented.\" && git push origin master"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
