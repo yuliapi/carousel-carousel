@@ -6,17 +6,17 @@ Tested in last versions of Chrome, Safari, Firefox and Opera
 
 ## Getting started
 
-###1. Install component
+### 1. Install component
 ````
 npm install --save carousel-carousel
 ````
 
-###2. Load the required files
+### 2. Load the required files
 Project under development. Planning to Babelify .js files and provide compiled .css as part of distribution.
 
 In a meanwhile to use the component import carousel.js to your project and compile carousel.scss file.
 
-###3. Create the HTML markup
+### 3. Create the HTML markup
 ````
 <div id="myCarousel" class="carousel">
         <div class="carousel-body">
@@ -43,7 +43,7 @@ In a meanwhile to use the component import carousel.js to your project and compi
 </div>
 ````
 
-###4. Activate carousel on your javascript file
+### 4. Activate carousel on your javascript file
 ````
 window.onload = function () {
     let myCarousel = new Carousel(document.getElementById('myCarousel'));
