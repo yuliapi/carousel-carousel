@@ -1,9 +1,3 @@
-window.onload = function () {
-    window.innerWidth;
-    let myCarousel = new Carousel(document.getElementById('myCarousel'));
-    myCarousel.activate()
-};
-
 class Div {
     constructor(c) {
         this.class = c;
