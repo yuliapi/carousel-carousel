@@ -37,7 +37,7 @@ In a meanwhile to use the component import carousel.js to your project and compi
                     data-target="next"><span></span>
             </button>
             <button class="slide-control control-prev" data-controls="myCarousel"
-                    data-target="previous" disabled><span></span>
+                    data-target="previous"><span></span>
             </button>
         </div>
 </div>
