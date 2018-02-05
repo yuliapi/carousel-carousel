@@ -14,7 +14,8 @@ npm install --save carousel-carousel
 ### 2. Load the required files
 This component is distributed with:
 + js/src/carousel.js - non-minified original source file compatible with browsers of latest version (support ECMAScript 6 is required)
-+ js/dist/carousel.js - minified and processed with Babel main JS file
++ js/dist/carousel.js - processed with Babel main JS file
++ js/dist/carousel.min.js - minified JS
 + scss/carousel.scss - SASS file for styling the carousel
 + css/carousel.css - compiled styles
 + demo - webpack bundled demo of carousel usage
