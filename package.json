@@ -1,7 +1,7 @@
 {
   "name": "carousel-carousel",
   "description": "JS component for rendering animated responsive slider with progress bullets",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "keywords": [
     "slider",
     "carousel",
