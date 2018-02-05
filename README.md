@@ -2,7 +2,7 @@
 Easy to use responsive slider.
 Tested in last versions of Chrome, Safari, Firefox and Opera 
 
-
+Check [live demo](http://yuliapi.github.io/projects/carousel/index.html?utm_source=github&utm_campaign=carousel)
 
 ## Getting started
 
@@ -12,9 +12,14 @@ npm install --save carousel-carousel
 ````
 
 ### 2. Load the required files
-Project under development. Planning to Babelify .js files and provide compiled .css as part of distribution.
+This component is distributed with:
++ js/src/carousel.js - non-minified original source file compatible with browsers of latest version (support ECMAScript 6 is required)
++ js/dist/carousel.js - minified and processed with Babel main JS file
++ scss/carousel.scss - SASS file for styling the carousel
++ css/carousel.css - compiled styles
++ demo - webpack bundled demo of carousel usage
 
-In a meanwhile to use the component import carousel.js to your project and compile carousel.scss file.
+You can styles and Javascript files that satisfy your project needs.
 
 ### 3. Create the HTML markup
 ````
