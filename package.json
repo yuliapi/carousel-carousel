@@ -29,7 +29,7 @@
     "js-compile": "babel --presets es2015 -d js/dist js/src",
     "js-minify": "uglifyjs --compress --mangle --output js/dist/carousel.min.js js/dist/carousel.js",
     "release": "npm-run-all css-* js-*",
-    "prepublish": "npm-auto-version",
+    "prepublish": "npm version patch",
     "postpublish": "git commit package.json -m \"Version incremented.\" && git push origin --tags && git push origin master"
   },
   "devDependencies": {
