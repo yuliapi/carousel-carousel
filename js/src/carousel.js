@@ -241,4 +241,4 @@ class Carousel {
 }
 
 
-export default Carousel
+export default Carousel;
