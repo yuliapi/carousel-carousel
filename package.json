@@ -26,7 +26,7 @@
   "browserList": [],
   "scripts": {
     "css-compile": "node-sass --output-style expanded --sourec-map true --source-map-contents true scss/carousel-carousel.scss css/carousel-carousel.css",
-    "js-compile": "babel --presets es2015 -d js/dist js/src",
+    "js-compile": "babel -d js/dist js/src",
     "js-minify": "uglifyjs --compress --mangle --output js/dist/carousel-carousel.min.js js/dist/carousel-carousel.js",
     "release": "npm-run-all css-* js-*",
     "prepublish": "npm version patch",
@@ -34,7 +34,8 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-strip": "^0.1.1",
+    "babel-preset-env": "^1.6.1",
     "node-sass": "^4.7.2",
     "npm-auto-version": "^1.0.0",
     "npm-run-all": "^4.1.2",
