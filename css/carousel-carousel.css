@@ -103,7 +103,7 @@
 }
 
 .carousel .slide-control:disabled {
-  display: none;
+  visibility: hidden;
 }
 
 .carousel .slide-control span {
