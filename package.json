@@ -29,8 +29,7 @@
     "js-compile": "babel --presets es2015 -d js/dist js/src",
     "js-minify": "uglifyjs --compress --mangle --output js/dist/carousel-carousel.min.js js/dist/carousel-carousel.js",
     "release": "npm-run-all css-* js-*",
-    "prepublish": "npm version patch",
-    "postpublish": "git commit package.json -m \"Version incremented.\""
+    "prepublish": "npm version patch"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
