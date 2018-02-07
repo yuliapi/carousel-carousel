@@ -9,10 +9,10 @@ Component can be used either with direct links to CDN resources or by installing
 ### 1. Use as CDN links
 Include following into head section of html page:
   ````
-  <link href="https://cdn.jsdelivr.net/npm/carousel-carousel@0.1.22/css/carousel-carousel.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/carousel-carousel@latest/css/carousel-carousel.css" rel="stylesheet"/>
   ````
   ````
-  <script src="https://cdn.jsdelivr.net/npm/carousel-carousel@0.1.22/js/dist/carousel-carousel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/carousel-carousel@latest/js/dist/carousel-carousel.min.js"></script>
   ````
 Create HTML markup
 ````
