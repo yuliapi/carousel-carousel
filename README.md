@@ -1,4 +1,4 @@
-# Carousel slider
+# Carousel-carousel slider
 Easy to use responsive slider.
 Tested in last versions of Chrome, Safari, Firefox and Opera 
 
@@ -13,11 +13,11 @@ npm install --save carousel-carousel
 
 ### 2. Load the required files
 This component is distributed with:
-+ js/src/carousel.js - non-minified original source file compatible with browsers of latest version (support ECMAScript 6 is required)
-+ js/dist/carousel.js - processed with Babel main JS file
-+ js/dist/carousel.min.js - minified JS
-+ scss/carousel.scss - SASS file for styling the carousel
-+ css/carousel.css - compiled styles
++ js/src/carousel-carousel.js - non-minified original source file compatible with browsers of latest version (support ECMAScript 6 is required)
++ js/dist/carousel-carousel.js - processed with Babel main JS file
++ js/dist/carousel-carousel.min.js - minified JS
++ scss/carousel-carousel.scss - SASS file for styling the carousel
++ css/carousel-carousel.css - compiled styles
 + demo - webpack bundled demo of carousel usage
 
 You can styles and Javascript files that satisfy your project needs.

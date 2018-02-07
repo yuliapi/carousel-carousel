@@ -14,10 +14,10 @@
   "author": "Iuliia Pishculina (http://yuliapi.github.io/)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yuliapi/carousel.git"
+    "url": "git+https://github.com/yuliapi/carousel-carousel.git"
   },
   "bugs": {
-    "url": "https://github.com/yuliapi/carousel/issues"
+    "url": "https://github.com/yuliapi/carousel-carousel/issues"
   },
   "lisence": "MIT",
   "engines": {
@@ -25,9 +25,9 @@
   },
   "browserList": [],
   "scripts": {
-    "css-compile": "node-sass --output-style expanded --sourec-map true --source-map-contents true scss/carousel.scss css/carousel.css",
+    "css-compile": "node-sass --output-style expanded --sourec-map true --source-map-contents true scss/carousel-carousel.scss css/carousel-carousel.css",
     "js-compile": "babel --presets es2015 -d js/dist js/src",
-    "js-minify": "uglifyjs --compress --mangle --output js/dist/carousel.min.js js/dist/carousel.js",
+    "js-minify": "uglifyjs --compress --mangle --output js/dist/carousel-carousel.min.js js/dist/carousel-carousel.js",
     "release": "npm-run-all css-* js-*",
     "prepublish": "npm version patch",
     "postpublish": "git commit package.json -m \"Version incremented.\""
