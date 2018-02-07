@@ -160,7 +160,7 @@ $transition: all 0.5s ease-in-out;
     right: calc(100vw - #{$side-width});
 
   }
-  &.active  {
+  &.active {
     opacity: 1;
     right: calc((50vw - #{$width} / 2));
   }
@@ -188,12 +188,14 @@ $transition: all 0.5s ease-in-out;
     background-color: rgb(255, 255, 255);
 
     @include slide-position(100vw, 0px);
-  };
+  }
+;
 
   @include adjust-content(large) {
     width: $slide-width;
     @include slide-position($slide-width, $side-width-medium);
-  };
+  }
+;
   @include adjust-content(x-large) {
     width: $slide-width;
     @include slide-position($slide-width, $side-width-large);
@@ -247,14 +249,14 @@ $transition: all 0.5s ease-in-out;
   }
 }
 
-  ul {
-    margin-top: 0;
-    padding: 0;
-    overflow: hidden;
-    display: inline-block;
-    float: left;
-    @include adjust-content(small) {
-      display: none;
+ul {
+  margin-top: 0;
+  padding: 0;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+  @include adjust-content(small) {
+    display: none;
   }
   .slide-control {
     margin-top: 0;
@@ -288,3 +290,4 @@ $transition: all 0.5s ease-in-out;
     transform: scale(1.5, 1.5);
   }
 }
+

@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.content {
+    height: 600px;
+}
+
+.slide-content {
+    display: flex;
+}
+
+.slide-content img {
+    box-shadow: 0 10px 20px 5px #aaaaaa, 0 0 2px #e4e4e4;
+}
+
+@media only screen and (min-width: 810px) and (max-width: 1200px) {
+    .slide-content {
+        height: max-content;
+    }
+    .slide-content img {
+        height: 515px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .slide-content {
+        height: max-content;
+    }
+    .slide-content img {
+        height: 515px;
+    }
+}
+
+.slide-content img {
+    width: 100%;
+    position: relative;
+}
