@@ -4,6 +4,8 @@ Tested in last versions of Chrome, Safari, Firefox and Opera
 
 Check [live demo](http://yuliapi.github.io/projects/carousel/index.html?utm_source=github&utm_campaign=carousel)
 
+Also available as [React component] http://yuliapi.github.io/projects/beehelper-prototype/templates/index.html
+
 ## How to use
 Component can be used either with direct links to CDN resources or by installing as NPM package.
 ### 1. Use as CDN links
